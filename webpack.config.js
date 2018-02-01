@@ -2,10 +2,15 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    './src/index.js'
+  ],
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -14,7 +19,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react']
+            presets: [
+              ['env', { modules: false }],
+              'react'
+            ],
+            plugins: ['react-hot-loader/babel']
           }
         },
         exclude: /node_modules/,

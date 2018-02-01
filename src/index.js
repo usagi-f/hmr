@@ -1,55 +1,21 @@
-// import React, { Component } from 'react';
-// import { render } from 'react-dom';
-// import Hello from './components/hello';
+import React from 'react';
+import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import App from './app';
 
-// class App extends Component {
-//     constructor() {
-//         super();
-//         this.handleChange = this.handleChange.bind(this);
-//         this.state = {
-//             flag: false
-//         }
-//     }
-//     handleChange() {
-//         this.setState({
-//             flag: !this.state.flag
-//         })
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <button onClick={this.handleChange}>Switch Flag</button>
-//                 {`${this.state.flag}`}
-//                 <Hello/>
-//             </div>
-//         )
-//     }
-// }
+const renderContainer = Component => {
+    render(
+        <AppContainer>
+            <Component />
+        </AppContainer>,
+        document.querySelector('#root')
+    )
+};
 
-// render(
-//     <App />,
-//     document.querySelector('#root')
-// );
-
-function component() {
-    const element = document.createElement('div');
-    const btn = document.createElement('button');
-    const printMe = require('./components/print').default;
-
-    btn.innerHTML = 'Click me';
-    btn.onclick = printMe;
-
-    element.appendChild(btn);
-    return element;
-}
-
-let element = component();
-document.body.appendChild(element);
+renderContainer(App);
 
 if (module.hot) {
-    module.hot.accept('./components/print.js', () => {
-        document.body.removeChild(element);
-        element = component();
-        document.body.appendChild(element);
+    module.hot.accept('./app', () => {
+        renderContainer(App);
     })
 }
