@@ -4,7 +4,7 @@ const initialState = {
     todos: []
 }
 
-function todos(state = initialState, action) {
+export default function todos(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO: // typeを頼りに処理を分岐する
       return Object.assign({}, state, { // 新しいStateを生成して返す
