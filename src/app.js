@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as Actions from './actions';
+import { addTodo } from './actions';
 
 class AppContainer extends Component {
     constructor(props) {
@@ -29,9 +29,9 @@ class AppContainer extends Component {
 const mapStateToProps = (state) => {
     return { state }
 }
-console.log(Actions)
+
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ Actions.addTodo }, dispatch);
+    return bindActionCreators({ addTodo }, dispatch);
 }
 
 const App = connect(
