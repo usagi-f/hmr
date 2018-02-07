@@ -1,15 +1,15 @@
 import { ADD_TODO } from '../actions/';
 
 const initialState = {
-    todos: []
+    list: []
 }
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO: // typeを頼りに処理を分岐する
       return Object.assign({}, state, { // 新しいStateを生成して返す
-        todos: [
-          ...state.todos,
+        list: [
+          ...state.list,
           {
             text: action.text,
             completed: false
