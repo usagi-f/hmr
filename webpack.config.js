@@ -23,7 +23,10 @@ module.exports = {
               ['env', { modules: false }],
               'react'
             ],
-            plugins: ['react-hot-loader/babel']
+            plugins: [
+              'react-hot-loader/babel',
+              'styled-jsx/babel'
+            ]
           }
         },
         exclude: /node_modules/,
