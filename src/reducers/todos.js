@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../actions/';
+import { ADD_TODO, SUCCEEDED_FETCH, FAILED_FETCH } from '../actions/';
 
 const initialState = {
     list: []
@@ -16,7 +16,15 @@ export default function todos(state = initialState, action) {
           }
         ]
       })
+    case SUCCEEDED_FETCH:
+      return Object.assign({}, state, {
+        data: action.payload
+      })
+    case FAILED_FETCH:
+      return Object.assign({}, state, {
+        message: action.message
+      })
     default: // フォールバック処理
-      return state
+    return state
   }
 }

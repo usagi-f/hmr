@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { addTodo } from './actions';
+import { addTodo, requestFetch } from './actions';
 
 class AppContainer extends Component {
     constructor(props) {
@@ -19,7 +19,8 @@ class AppContainer extends Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.props.addTodo('hogehoge')}>Add ToDo</button>
+                <button onClick={() => this.props.addTodo('Example Text')}>Add ToDo</button>
+                <button onClick={this.props.requestFetch}>Add ToDo</button>
                 {`${JSON.stringify(this.props.state)}`}
             </div>
         )
@@ -31,7 +32,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ addTodo }, dispatch);
+    return bindActionCreators({ addTodo, requestFetch }, dispatch);
 }
 
 const App = connect(
