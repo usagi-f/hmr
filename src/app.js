@@ -18,11 +18,7 @@ class AppContainer extends Component {
         })
     }
     render() {
-        return (
-            <div>
-                <Hello/>
-            </div>
-        )
+        return <Hello/>;
     }
 }
 
