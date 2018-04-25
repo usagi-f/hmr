@@ -23,10 +23,7 @@ module.exports = {
               ['@babel/preset-env', { modules: false }],
               '@babel/preset-react'
             ],
-            plugins: [
-              'react-hot-loader/babel',
-              'styled-jsx/babel'
-            ]
+            plugins: ['react-hot-loader/babel']
           }
         },
         exclude: /node_modules/,

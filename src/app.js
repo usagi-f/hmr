@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { addTodo, requestFetch } from './actions';
 import Hello from './components/hello';
 
-class AppContainer extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -18,21 +15,14 @@ class AppContainer extends Component {
         })
     }
     render() {
-        return <Hello/>;
+        return (
+            <div>
+                <button onClick={this.handleChange}>Switch Flag</button>
+                {`${this.state.flag}`}
+                <Hello/>
+            </div>
+        )
     }
 }
-
-const mapStateToProps = (state) => {
-    return { state }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ addTodo, requestFetch }, dispatch);
-}
-
-const App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppContainer)
 
 export default App;
